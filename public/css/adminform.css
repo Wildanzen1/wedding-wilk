@@ -1,0 +1,387 @@
+
+    /* ===== Wedding Invitation Form ===== */
+    .wedding-form {
+        --wf-cream: #fbf7f2;
+        --wf-blush: #f6e6e2;
+        --wf-rose: #c98b8b;
+        --wf-rose-dark: #b07272;
+        --wf-gold: #b8975a;
+        --wf-gold-soft: #ecdfc4;
+        --wf-ink: #4a3f3a;
+        --wf-muted: #8c7f78;
+
+        font-family: 'Poppins', sans-serif;
+        color: var(--wf-ink);
+    }
+
+    .wedding-form .form-heading {
+        position: relative;
+        padding: 28px 30px;
+        margin-bottom: 26px;
+        overflow: hidden;
+        border: 1px solid var(--wf-gold-soft);
+        border-radius: 22px;
+        background: linear-gradient(125deg, #fff 0%, var(--wf-cream) 60%, var(--wf-blush) 100%);
+        box-shadow: 0 6px 24px rgba(74, 63, 58, .04);
+    }
+
+    .wedding-form .form-heading::after {
+        content: '♡';
+        position: absolute;
+        right: 30px;
+        top: -22px;
+        color: rgba(201, 139, 139, .13);
+        font-family: Georgia, serif;
+        font-size: 150px;
+        line-height: 1;
+        pointer-events: none;
+    }
+
+    .wedding-form .heading-icon {
+        display: inline-flex;
+        width: 48px;
+        height: 48px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 12px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, var(--wf-rose), var(--wf-rose-dark));
+        color: #fff;
+        font-size: 22px;
+        box-shadow: 0 5px 12px rgba(176, 114, 114, .2);
+    }
+
+    .wedding-form .heading-title {
+        margin: 0 0 8px;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(28px, 4vw, 36px);
+        font-weight: 700;
+        color: var(--wf-rose-dark);
+    }
+
+    .wedding-form .heading-description {
+        margin: 0;
+        color: var(--wf-muted);
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    /* Section cards */
+    .wedding-form .wf-card {
+        margin-bottom: 22px;
+        overflow: hidden;
+        border: 1px solid var(--wf-gold-soft);
+        border-radius: 18px;
+        background: #fff;
+        box-shadow: 0 5px 20px rgba(74, 63, 58, .035);
+    }
+
+    .wedding-form .wf-card-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 19px 24px;
+        border-bottom: 1px solid #f2e9e0;
+        background: linear-gradient(90deg, #fff 0%, #fffaf7 100%);
+    }
+
+    .wedding-form .wf-section-icon {
+        display: flex;
+        width: 43px;
+        height: 43px;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--wf-gold-soft);
+        border-radius: 14px;
+        background: var(--wf-blush);
+        color: var(--wf-rose-dark);
+        font-size: 19px;
+    }
+
+    .wedding-form .wf-section-title {
+        margin: 0;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 23px;
+        font-weight: 700;
+        color: var(--wf-ink);
+    }
+
+    .wedding-form .wf-section-subtitle {
+        display: block;
+        margin-top: 3px;
+        color: var(--wf-muted);
+        font-size: 11px;
+    }
+
+    .wedding-form .wf-card-body {
+        padding: 25px;
+    }
+
+    /* Form controls */
+    .wedding-form .form-label {
+        margin-bottom: 8px;
+        color: var(--wf-ink);
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .wedding-form .required-mark {
+        color: var(--wf-rose-dark);
+    }
+
+    .wedding-form .form-control,
+    .wedding-form .form-select {
+        min-height: 45px;
+        padding: 11px 14px;
+        border: 1px solid #e9dfd5;
+        border-radius: 11px;
+        background-color: #fffdfb;
+        color: var(--wf-ink);
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+
+    .wedding-form textarea.form-control {
+        min-height: 110px;
+        resize: vertical;
+    }
+
+    .wedding-form .form-control::placeholder {
+        color: #b7aaa2;
+    }
+
+    .wedding-form .form-control:focus,
+    .wedding-form .form-select:focus {
+        border-color: var(--wf-rose);
+        background-color: #fff;
+        box-shadow: 0 0 0 4px rgba(201, 139, 139, .12);
+    }
+
+    .wedding-form input[type="file"].form-control {
+        padding: 7px;
+        background: #fffdfb;
+    }
+
+    .wedding-form input[type="file"]::file-selector-button {
+        margin-right: 10px;
+        padding: 7px 12px;
+        border: 0;
+        border-radius: 7px;
+        background: var(--wf-blush);
+        color: var(--wf-rose-dark);
+        font-size: 11px;
+        cursor: pointer;
+    }
+
+    .wedding-form .wf-hint {
+        display: block;
+        margin-top: 7px;
+        color: var(--wf-muted);
+        font-size: 10px;
+        line-height: 1.7;
+    }
+
+    /* Photo previews */
+    .wedding-form .wf-photo-box {
+        height: 100%;
+        padding: 15px;
+        border: 1px dashed #dfc9bd;
+        border-radius: 14px;
+        background: #fffaf7;
+    }
+
+    .wedding-form .wf-photo-title {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--wf-ink);
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .wedding-form .wf-photo-preview {
+        display: block;
+        width: 100%;
+        max-width: 180px;
+        max-height: 150px;
+        margin: 13px auto 0;
+        border: 3px solid #fff;
+        border-radius: 12px;
+        object-fit: cover;
+        box-shadow: 0 3px 12px rgba(74, 63, 58, .12);
+    }
+
+    .wedding-form .wf-photo-empty {
+        display: flex;
+        min-height: 90px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 7px;
+        color: #b5a49a;
+        font-size: 11px;
+    }
+
+    .wedding-form .wf-photo-empty i {
+        font-size: 28px;
+        color: var(--wf-rose);
+    }
+
+    /* Publication status */
+    .wedding-form .wf-publish-box {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 18px;
+        border: 1px solid var(--wf-gold-soft);
+        border-radius: 14px;
+        background: linear-gradient(110deg, #fffaf7, #fff);
+    }
+
+    .wedding-form .wf-publish-icon {
+        display: flex;
+        width: 43px;
+        height: 43px;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        border-radius: 13px;
+        background: var(--wf-blush);
+        color: var(--wf-rose-dark);
+        font-size: 20px;
+    }
+
+    .wedding-form .wf-publish-title {
+        margin-bottom: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--wf-ink);
+    }
+
+    .wedding-form .wf-publish-description {
+        margin: 0;
+        color: var(--wf-muted);
+        font-size: 10px;
+        line-height: 1.7;
+    }
+
+    .wedding-form .form-check-input {
+        width: 2.5em;
+        height: 1.3em;
+        margin-top: 0;
+        cursor: pointer;
+        border-color: #d9c7bb;
+        box-shadow: none;
+    }
+
+    .wedding-form .form-check-input:checked {
+        border-color: var(--wf-rose-dark);
+        background-color: var(--wf-rose-dark);
+    }
+
+    .wedding-form .form-check-input:focus {
+        border-color: var(--wf-rose);
+        box-shadow: 0 0 0 4px rgba(201, 139, 139, .12);
+    }
+
+    /* Error alert */
+    .wedding-form .wf-error {
+        margin-bottom: 22px;
+        padding: 18px 21px;
+        border: 1px solid #e8bcbc;
+        border-radius: 15px;
+        background: #fff5f4;
+        color: #963f3f;
+        font-size: 12px;
+    }
+
+    .wedding-form .wf-error ul {
+        padding-left: 20px;
+    }
+
+    /* Action buttons */
+    .wedding-form .wf-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin: 28px 0;
+        padding: 20px 0;
+        border-top: 1px solid var(--wf-gold-soft);
+    }
+
+    .wedding-form .wf-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 44px;
+        padding: 11px 20px;
+        border: 1px solid transparent;
+        border-radius: 12px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all .2s ease;
+    }
+
+    .wedding-form .wf-btn-save {
+        background: linear-gradient(135deg, var(--wf-rose), var(--wf-rose-dark));
+        color: #fff;
+        box-shadow: 0 5px 13px rgba(176, 114, 114, .2);
+    }
+
+    .wedding-form .wf-btn-save:hover {
+        transform: translateY(-1px);
+        color: #fff;
+        box-shadow: 0 7px 17px rgba(176, 114, 114, .28);
+    }
+
+    .wedding-form .wf-btn-back {
+        border-color: var(--wf-gold-soft);
+        background: #fff;
+        color: var(--wf-ink);
+    }
+
+    .wedding-form .wf-btn-back:hover {
+        border-color: var(--wf-rose);
+        background: var(--wf-blush);
+        color: var(--wf-rose-dark);
+    }
+
+    @media (max-width: 576px) {
+        .wedding-form .form-heading {
+            padding: 22px 20px;
+        }
+
+        .wedding-form .form-heading::after {
+            right: 8px;
+            font-size: 100px;
+        }
+
+        .wedding-form .wf-card-header {
+            padding: 16px;
+        }
+
+        .wedding-form .wf-card-body {
+            padding: 18px;
+        }
+
+        .wedding-form .wf-actions {
+            align-items: stretch;
+            flex-direction: column-reverse;
+        }
+
+        .wedding-form .wf-actions > div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wedding-form .wf-btn {
+            width: 100%;
+        }
+    }
+

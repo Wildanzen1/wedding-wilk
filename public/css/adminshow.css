@@ -1,0 +1,421 @@
+
+    /* ===== Wedding Invitation Detail ===== */
+    .wd-detail {
+        --wd-cream: #fbf7f2;
+        --wd-blush: #f6e6e2;
+        --wd-rose: #c98b8b;
+        --wd-rose-dark: #b07272;
+        --wd-gold: #b8975a;
+        --wd-gold-soft: #ecdfc4;
+        --wd-ink: #4a3f3a;
+        --wd-muted: #8c7f78;
+
+        font-family: 'Poppins', sans-serif;
+        color: var(--wd-ink);
+    }
+
+    .wd-detail .wd-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        padding: 26px 28px;
+        margin-bottom: 25px;
+        border: 1px solid var(--wd-gold-soft);
+        border-radius: 20px;
+        background: linear-gradient(
+            120deg,
+            #fff 0%,
+            var(--wd-cream) 65%,
+            var(--wd-blush) 100%
+        );
+        box-shadow: 0 5px 20px rgba(74, 63, 58, .035);
+    }
+
+    .wd-detail .wd-heading-icon {
+        display: flex;
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        background: linear-gradient(135deg, var(--wd-rose), var(--wd-rose-dark));
+        color: #fff;
+        font-size: 21px;
+        box-shadow: 0 5px 12px rgba(176, 114, 114, .18);
+    }
+
+    .wd-detail .wd-heading-title {
+        margin: 0 0 6px;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 34px;
+        font-weight: 700;
+        color: var(--wd-rose-dark);
+    }
+
+    .wd-detail .wd-heading-description {
+        margin: 0;
+        color: var(--wd-muted);
+        font-size: 12px;
+        line-height: 1.8;
+    }
+
+    /* Buttons */
+    .wd-detail .wd-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 17px;
+        border: 1px solid transparent;
+        border-radius: 11px;
+        font-size: 12px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all .2s ease;
+    }
+
+    .wd-detail .wd-btn-back {
+        border-color: var(--wd-gold-soft);
+        background: #fff;
+        color: var(--wd-ink);
+    }
+
+    .wd-detail .wd-btn-back:hover {
+        background: var(--wd-blush);
+        color: var(--wd-rose-dark);
+        border-color: var(--wd-rose);
+    }
+
+    .wd-detail .wd-btn-edit {
+        background: linear-gradient(135deg, var(--wd-rose), var(--wd-rose-dark));
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(176, 114, 114, .15);
+    }
+
+    .wd-detail .wd-btn-edit:hover {
+        color: #fff;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 15px rgba(176, 114, 114, .23);
+    }
+
+    .wd-detail .wd-btn-public {
+        background: #fff;
+        border-color: var(--wd-gold-soft);
+        color: var(--wd-rose-dark);
+    }
+
+    .wd-detail .wd-btn-public:hover {
+        background: var(--wd-blush);
+        color: var(--wd-rose-dark);
+    }
+
+    .wd-detail .wd-btn-maps {
+        background: var(--wd-blush);
+        border-color: #f0d8d3;
+        color: var(--wd-rose-dark);
+    }
+
+    .wd-detail .wd-btn-maps:hover {
+        background: #efd8d3;
+        color: var(--wd-rose-dark);
+    }
+
+    /* Shared cards */
+    .wd-detail .wd-card {
+        height: 100%;
+        overflow: hidden;
+        border: 1px solid var(--wd-gold-soft);
+        border-radius: 18px;
+        background: #fff;
+        box-shadow: 0 5px 20px rgba(74, 63, 58, .035);
+    }
+
+    .wd-detail .wd-card-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 17px 21px;
+        border-bottom: 1px solid #f2e9e0;
+        background: linear-gradient(90deg, #fff, #fffaf7);
+    }
+
+    .wd-detail .wd-section-icon {
+        display: flex;
+        width: 41px;
+        height: 41px;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        border-radius: 13px;
+        border: 1px solid var(--wd-gold-soft);
+        background: var(--wd-blush);
+        color: var(--wd-rose-dark);
+        font-size: 18px;
+    }
+
+    .wd-detail .wd-section-title {
+        margin: 0;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 23px;
+        font-weight: 700;
+        color: var(--wd-ink);
+    }
+
+    .wd-detail .wd-section-subtitle {
+        display: block;
+        margin-top: 3px;
+        color: var(--wd-muted);
+        font-size: 10px;
+    }
+
+    .wd-detail .wd-card-body {
+        padding: 22px;
+    }
+
+    /* Cover and couple names */
+    .wd-detail .wd-cover {
+        position: relative;
+        min-height: 230px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #f6e6e2, #fbf7f2, #ecdfc4);
+    }
+
+    .wd-detail .wd-cover img {
+        display: block;
+        width: 100%;
+        height: 310px;
+        object-fit: cover;
+    }
+
+    .wd-detail .wd-cover-placeholder {
+        display: flex;
+        min-height: 230px;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        color: var(--wd-rose-dark);
+    }
+
+    .wd-detail .wd-cover-placeholder i {
+        font-size: 55px;
+    }
+
+    .wd-detail .wd-cover-placeholder span {
+        font-size: 12px;
+    }
+
+    .wd-detail .wd-couple-summary {
+        padding: 28px 20px 30px;
+        text-align: center;
+        background: linear-gradient(180deg, #fff, #fffaf7);
+    }
+
+    .wd-detail .wd-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 7px 13px;
+        margin-bottom: 16px;
+        border: 1px solid var(--wd-gold-soft);
+        border-radius: 30px;
+        background: var(--wd-cream);
+        color: var(--wd-muted);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: .3px;
+    }
+
+    .wd-detail .wd-status.is-published {
+        border-color: #c7dfca;
+        background: #f0f8f0;
+        color: #47794d;
+    }
+
+    .wd-detail .wd-couple-names {
+        margin: 0;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(31px, 5vw, 43px);
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--wd-rose-dark);
+        overflow-wrap: anywhere;
+    }
+
+    .wd-detail .wd-ampersand {
+        padding: 0 5px;
+        color: var(--wd-gold);
+        font-family: 'Great Vibes', cursive;
+        font-size: .95em;
+    }
+
+    .wd-detail .wd-public-url {
+        display: inline-block;
+        max-width: 100%;
+        margin-top: 13px;
+        padding: 8px 13px;
+        border: 1px dashed var(--wd-gold-soft);
+        border-radius: 9px;
+        background: var(--wd-cream);
+        color: var(--wd-muted);
+        font-size: 11px;
+        overflow-wrap: anywhere;
+    }
+
+    /* Couple cards */
+    .wd-detail .wd-person-card {
+        text-align: center;
+    }
+
+    .wd-detail .wd-person-photo {
+        width: 150px;
+        height: 150px;
+        max-width: 100%;
+        margin-bottom: 17px;
+        border: 4px solid #fff;
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow:
+            0 0 0 1px var(--wd-gold-soft),
+            0 5px 18px rgba(74, 63, 58, .10);
+    }
+
+    .wd-detail .wd-person-placeholder {
+        display: flex;
+        width: 150px;
+        height: 150px;
+        max-width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 17px;
+        border: 4px solid #fff;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--wd-blush), var(--wd-cream));
+        box-shadow: 0 0 0 1px var(--wd-gold-soft);
+        color: var(--wd-rose-dark);
+        font-size: 48px;
+    }
+
+    .wd-detail .wd-person-name {
+        margin: 0 0 5px;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 26px;
+        font-weight: 700;
+        color: var(--wd-ink);
+        overflow-wrap: anywhere;
+    }
+
+    .wd-detail .wd-person-role {
+        margin: 0;
+        color: var(--wd-muted);
+        font-size: 11px;
+    }
+
+    .wd-detail .wd-person-divider {
+        width: 45px;
+        height: 2px;
+        margin: 17px auto 0;
+        border-radius: 5px;
+        background: linear-gradient(90deg, var(--wd-gold), var(--wd-rose));
+    }
+
+    /* Event information */
+    .wd-detail .wd-info-label {
+        margin-bottom: 5px;
+        color: var(--wd-muted);
+        font-size: 10px;
+        letter-spacing: .2px;
+    }
+
+    .wd-detail .wd-info-value {
+        margin-bottom: 18px;
+        color: var(--wd-ink);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.8;
+        overflow-wrap: anywhere;
+    }
+
+    .wd-detail .wd-info-value:last-child {
+        margin-bottom: 0;
+    }
+
+    .wd-detail .wd-event-highlight {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 23px;
+        padding: 14px;
+        border: 1px solid #f0e3db;
+        border-radius: 12px;
+        background: #fffaf7;
+    }
+
+    .wd-detail .wd-event-highlight-icon {
+        display: flex;
+        width: 38px;
+        height: 38px;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        border-radius: 11px;
+        background: var(--wd-blush);
+        color: var(--wd-rose-dark);
+        font-size: 17px;
+    }
+
+    .wd-detail .wd-empty {
+        color: #b0a39a;
+        font-size: 12px;
+        font-style: italic;
+    }
+
+    .wd-detail .wd-story {
+        color: var(--wd-ink);
+        font-size: 12px;
+        line-height: 2;
+        overflow-wrap: anywhere;
+    }
+
+    .wd-detail .wd-url {
+        display: inline-block;
+        max-width: 100%;
+        color: var(--wd-rose-dark);
+        font-size: 12px;
+        overflow-wrap: anywhere;
+    }
+
+    /* Responsive */
+    @media (max-width: 576px) {
+        .wd-detail .wd-heading {
+            padding: 20px;
+        }
+
+        .wd-detail .wd-heading-title {
+            font-size: 29px;
+        }
+
+        .wd-detail .wd-heading-actions {
+            display: flex;
+            width: 100%;
+        }
+
+        .wd-detail .wd-heading-actions .wd-btn {
+            flex: 1;
+        }
+
+        .wd-detail .wd-cover img {
+            height: 220px;
+        }
+
+        .wd-detail .wd-couple-summary {
+            padding: 23px 15px;
+        }
+
+        .wd-detail .wd-card-body {
+            padding: 18px;
+        }
+    }

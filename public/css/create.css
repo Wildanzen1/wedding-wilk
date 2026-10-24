@@ -1,0 +1,203 @@
+
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap');
+
+    .create-wedding {
+        --cream: #fbf7f2;
+        --blush: #f6e6e2;
+        --rose: #c98b8b;
+        --rose-dark: #b07272;
+        --gold: #b8975a;
+        --gold-soft: #ecdfc4;
+        --ink: #4a3f3a;
+        --muted: #8c7f78;
+
+        color: var(--ink);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* Header halaman */
+    .create-wedding .create-heading {
+        position: relative;
+        overflow: hidden;
+        padding: 25px 28px;
+        margin-bottom: 25px;
+        border: 1px solid var(--gold-soft);
+        border-radius: 20px;
+        background: linear-gradient(
+            120deg,
+            #fff,
+            var(--cream),
+            var(--blush)
+        );
+        box-shadow: 0 5px 20px rgba(74, 63, 58, .04);
+    }
+
+    .create-wedding .create-heading::after {
+        position: absolute;
+        top: -30px;
+        right: 20px;
+        content: '♡';
+        color: rgba(201, 139, 139, .12);
+        font-family: Georgia, serif;
+        font-size: 120px;
+        line-height: 1;
+        pointer-events: none;
+    }
+
+    .create-wedding .heading-icon {
+        display: flex;
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        background: linear-gradient(
+            135deg,
+            var(--rose),
+            var(--rose-dark)
+        );
+        color: white;
+        font-size: 21px;
+        box-shadow: 0 5px 12px rgba(176, 114, 114, .18);
+    }
+
+    .create-wedding .heading-label {
+        margin-bottom: 7px;
+        color: var(--gold);
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    }
+
+    .create-wedding .heading-title {
+        margin: 0;
+        color: var(--rose-dark);
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 1.1;
+    }
+
+    .create-wedding .heading-description {
+        margin: 7px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.8;
+    }
+
+    /* Tombol kembali */
+    .create-wedding .btn-back {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border: 1px solid var(--gold-soft);
+        border-radius: 30px;
+        background: white;
+        color: var(--ink);
+        font-size: 12px;
+        text-decoration: none;
+        transition: .2s ease;
+    }
+
+    .create-wedding .btn-back:hover {
+        border-color: var(--rose);
+        background: var(--blush);
+        color: var(--rose-dark);
+        transform: translateY(-1px);
+    }
+
+    /* Area form */
+    .create-wedding .create-form-wrapper {
+        padding: 25px;
+        border: 1px solid var(--gold-soft);
+        border-radius: 19px;
+        background: white;
+        box-shadow: 0 6px 24px rgba(74, 63, 58, .04);
+    }
+
+    .create-wedding .form-intro {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        padding-bottom: 20px;
+        margin-bottom: 25px;
+        border-bottom: 1px solid #f2e9e0;
+    }
+
+    .create-wedding .form-intro-icon {
+        display: flex;
+        width: 43px;
+        height: 43px;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--gold-soft);
+        border-radius: 13px;
+        background: var(--blush);
+        color: var(--rose-dark);
+        font-size: 19px;
+    }
+
+    .create-wedding .form-intro-title {
+        margin: 0;
+        color: var(--ink);
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 26px;
+        font-weight: 700;
+    }
+
+    .create-wedding .form-intro-description {
+        margin: 3px 0 0;
+        color: var(--muted);
+        font-size: 10px;
+        line-height: 1.8;
+    }
+
+    /* Menyelaraskan font komponen form */
+    .create-wedding .wedding-form {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .create-wedding .form-label {
+        color: var(--ink);
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .create-wedding .form-control,
+    .create-wedding .form-select {
+        border-color: #e9dfd5;
+        border-radius: 10px;
+        color: var(--ink);
+        font-size: 12px;
+    }
+
+    .create-wedding .form-control:focus,
+    .create-wedding .form-select:focus {
+        border-color: var(--rose);
+        box-shadow: 0 0 0 3px rgba(201, 139, 139, .13);
+    }
+
+    @media (max-width: 576px) {
+        .create-wedding .create-heading {
+            padding: 20px;
+        }
+
+        .create-wedding .heading-title {
+            font-size: 30px;
+        }
+
+        .create-wedding .create-form-wrapper {
+            padding: 16px;
+        }
+
+        .create-wedding .form-intro-title {
+            font-size: 23px;
+        }
+    }

@@ -1,0 +1,231 @@
+
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap');
+
+    .edit-wedding {
+        --cream: #fbf7f2;
+        --blush: #f6e6e2;
+        --rose: #c98b8b;
+        --rose-dark: #b07272;
+        --gold: #b8975a;
+        --gold-soft: #ecdfc4;
+        --ink: #4a3f3a;
+        --muted: #8c7f78;
+
+        color: var(--ink);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    /* Header halaman */
+    .edit-wedding .edit-heading {
+        padding: 25px 28px;
+        margin-bottom: 25px;
+        border: 1px solid var(--gold-soft);
+        border-radius: 20px;
+        background: linear-gradient(
+            120deg,
+            #fff,
+            var(--cream),
+            var(--blush)
+        );
+        box-shadow: 0 5px 20px rgba(74, 63, 58, .04);
+    }
+
+    .edit-wedding .heading-icon {
+        display: flex;
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        background: linear-gradient(
+            135deg,
+            var(--rose),
+            var(--rose-dark)
+        );
+        color: white;
+        font-size: 21px;
+        box-shadow: 0 5px 12px rgba(176, 114, 114, .18);
+    }
+
+    .edit-wedding .heading-title {
+        margin: 0;
+        color: var(--rose-dark);
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 1.1;
+    }
+
+    .edit-wedding .heading-description {
+        margin: 7px 0 0;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.8;
+    }
+
+    .edit-wedding .heading-label {
+        margin-bottom: 7px;
+        color: var(--gold);
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+    }
+
+    /* Tombol kembali */
+    .edit-wedding .btn-back {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 11px 18px;
+        border: 1px solid var(--gold-soft);
+        border-radius: 30px;
+        background: white;
+        color: var(--ink);
+        font-size: 12px;
+        text-decoration: none;
+        transition: .2s ease;
+    }
+
+    .edit-wedding .btn-back:hover {
+        border-color: var(--rose);
+        background: var(--blush);
+        color: var(--rose-dark);
+    }
+
+    /* Kartu utama */
+    .edit-wedding .edit-card {
+        overflow: hidden;
+        border: 1px solid var(--gold-soft);
+        border-radius: 19px;
+        background: white;
+        box-shadow: 0 6px 24px rgba(74, 63, 58, .04);
+    }
+
+    .edit-wedding .edit-card-header {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        padding: 19px 25px;
+        border-bottom: 1px solid #f2e9e0;
+        background: linear-gradient(90deg, #fff, #fffaf7);
+    }
+
+    .edit-wedding .card-header-icon {
+        display: flex;
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--gold-soft);
+        border-radius: 13px;
+        background: var(--blush);
+        color: var(--rose-dark);
+        font-size: 19px;
+    }
+
+    .edit-wedding .card-title {
+        margin: 0;
+        color: var(--ink);
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 25px;
+        font-weight: 700;
+    }
+
+    .edit-wedding .card-subtitle {
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 10px;
+        line-height: 1.7;
+    }
+
+    .edit-wedding .edit-card-body {
+        padding: 26px;
+    }
+
+    /* Penegasan nama mempelai */
+    .edit-wedding .couple-name {
+        color: var(--rose-dark);
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 27px;
+        font-weight: 700;
+        overflow-wrap: anywhere;
+    }
+
+    .edit-wedding .couple-ampersand {
+        color: var(--gold);
+        font-family: 'Great Vibes', cursive;
+        font-size: 30px;
+    }
+
+    /* Menyelaraskan elemen di dalam form */
+    .edit-wedding label,
+    .edit-wedding input,
+    .edit-wedding textarea,
+    .edit-wedding select,
+    .edit-wedding button {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .edit-wedding .form-label {
+        color: var(--ink);
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .edit-wedding .form-control,
+    .edit-wedding .form-select {
+        border-color: #e9dfd5;
+        border-radius: 10px;
+        color: var(--ink);
+        font-size: 12px;
+    }
+
+    .edit-wedding .form-control:focus,
+    .edit-wedding .form-select:focus {
+        border-color: var(--rose);
+        box-shadow: 0 0 0 3px rgba(201, 139, 139, .13);
+    }
+
+    .edit-wedding .btn-save {
+        border: 0;
+        border-radius: 11px;
+        background: linear-gradient(
+            135deg,
+            var(--rose),
+            var(--rose-dark)
+        );
+        color: white;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .edit-wedding .btn-save:hover {
+        background: #925b5d;
+        color: white;
+    }
+
+    @media (max-width: 576px) {
+        .edit-wedding .edit-heading {
+            padding: 20px;
+        }
+
+        .edit-wedding .heading-title {
+            font-size: 30px;
+        }
+
+        .edit-wedding .edit-card-body {
+            padding: 17px;
+        }
+
+        .edit-wedding .edit-card-header {
+            padding: 17px;
+        }
+
+        .edit-wedding .couple-name {
+            font-size: 23px;
+        }
+    }
