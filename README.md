@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -60,3 +61,14 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 =======
 # wedding-wilk
 >>>>>>> a7abb4e544eb09bf3af596b5f83224127dbc75e1
+=======
+# Wedding Invitation
+
+Website undangan pernikahan berbasis Laravel.
+
+## Teknologi
+- Laravel
+- PHP
+- MySQL
+- Bootstrap
+>>>>>>> 38c2da8d303b7fc73b14ed21db0ff9869001bb83
