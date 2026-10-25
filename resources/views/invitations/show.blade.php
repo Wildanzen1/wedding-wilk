@@ -26,8 +26,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap"
           rel="stylesheet">
 
-        <link rel="stylesheet" href="{{ asset('css/show.css') }}">
-
+    {{-- CSS undangan --}}
+    <link rel="stylesheet" href="{{ asset('css/show.css') }}">
 </head>
 
 <body>
@@ -59,9 +59,7 @@
 
             <h1 class="hero-names">
                 {{ $invitation->groom_name }}
-
                 <span class="hero-ampersand">&amp;</span>
-
                 {{ $invitation->bride_name }}
             </h1>
 
@@ -91,6 +89,7 @@
                     Buka Undangan
                 </a>
             </div>
+
         </div>
     </section>
 
@@ -116,6 +115,7 @@
             apabila Bapak/Ibu/Saudara/i berkenan hadir untuk
             memberikan doa restu kepada kedua mempelai.
         </p>
+
     </section>
 
     {{-- ================================================== --}}
@@ -160,9 +160,7 @@
                     {{ $invitation->groom_name }}
                 </h3>
 
-                <p class="person-description">
-                    Mempelai Pria
-                </p>
+                <p class="person-description">Mempelai Pria</p>
             </div>
 
             {{-- Ornamen hati --}}
@@ -194,9 +192,7 @@
                     {{ $invitation->bride_name }}
                 </h3>
 
-                <p class="person-description">
-                    Mempelai Wanita
-                </p>
+                <p class="person-description">Mempelai Wanita</p>
             </div>
 
         </div>
@@ -221,6 +217,7 @@
 
                 <div class="story-text">{{ $invitation->story }}</div>
             </div>
+
         </section>
     @endif
 
@@ -265,17 +262,13 @@
                         </div>
 
                         <div>
-                            <div class="event-info-label">
-                                Hari, Tanggal
-                            </div>
+                            <div class="event-info-label">Hari, Tanggal</div>
 
                             <div class="event-info-value">
                                 @if ($invitation->akad_date)
                                     {{ \Carbon\Carbon::parse($invitation->akad_date)->locale('id')->translatedFormat('l, d F Y') }}
                                 @else
-                                    <span class="empty-text">
-                                        Belum ditentukan
-                                    </span>
+                                    <span class="empty-text">Belum ditentukan</span>
                                 @endif
                             </div>
                         </div>
@@ -287,9 +280,7 @@
                         </div>
 
                         <div>
-                            <div class="event-info-label">
-                                Waktu
-                            </div>
+                            <div class="event-info-label">Waktu</div>
 
                             <div class="event-info-value">
                                 @if ($invitation->akad_date)
@@ -297,9 +288,7 @@
                                     {{ \Carbon\Carbon::parse($invitation->akad_date)->format('H:i') }}
                                     WIB
                                 @else
-                                    <span class="empty-text">
-                                        Belum ditentukan
-                                    </span>
+                                    <span class="empty-text">Belum ditentukan</span>
                                 @endif
                             </div>
                         </div>
@@ -311,9 +300,7 @@
                         </div>
 
                         <div>
-                            <div class="event-info-label">
-                                Tempat
-                            </div>
+                            <div class="event-info-label">Tempat</div>
 
                             <div class="event-info-value">
                                 {{ $invitation->akad_location ?: 'Belum ditentukan' }}
@@ -327,9 +314,7 @@
                         </div>
 
                         <div>
-                            <div class="event-info-label">
-                                Alamat
-                            </div>
+                            <div class="event-info-label">Alamat</div>
 
                             <div class="event-info-value">
                                 {{ $invitation->akad_address ?: 'Belum ditentukan' }}
@@ -363,17 +348,13 @@
                         </div>
 
                         <div>
-                            <div class="event-info-label">
-                                Hari, Tanggal
-                            </div>
+                            <div class="event-info-label">Hari, Tanggal</div>
 
                             <div class="event-info-value">
                                 @if ($invitation->reception_date)
                                     {{ \Carbon\Carbon::parse($invitation->reception_date)->locale('id')->translatedFormat('l, d F Y') }}
                                 @else
-                                    <span class="empty-text">
-                                        Belum ditentukan
-                                    </span>
+                                    <span class="empty-text">Belum ditentukan</span>
                                 @endif
                             </div>
                         </div>
@@ -385,9 +366,7 @@
                         </div>
 
                         <div>
-                            <div class="event-info-label">
-                                Waktu
-                            </div>
+                            <div class="event-info-label">Waktu</div>
 
                             <div class="event-info-value">
                                 @if ($invitation->reception_date)
@@ -395,9 +374,7 @@
                                     {{ \Carbon\Carbon::parse($invitation->reception_date)->format('H:i') }}
                                     WIB
                                 @else
-                                    <span class="empty-text">
-                                        Belum ditentukan
-                                    </span>
+                                    <span class="empty-text">Belum ditentukan</span>
                                 @endif
                             </div>
                         </div>
@@ -409,9 +386,7 @@
                         </div>
 
                         <div>
-                            <div class="event-info-label">
-                                Tempat
-                            </div>
+                            <div class="event-info-label">Tempat</div>
 
                             <div class="event-info-value">
                                 {{ $invitation->reception_location ?: 'Belum ditentukan' }}
@@ -425,9 +400,7 @@
                         </div>
 
                         <div>
-                            <div class="event-info-label">
-                                Alamat
-                            </div>
+                            <div class="event-info-label">Alamat</div>
 
                             <div class="event-info-value">
                                 {{ $invitation->reception_address ?: 'Belum ditentukan' }}
@@ -453,6 +426,7 @@
                 </a>
             </div>
         @endif
+
     </section>
 
     {{-- ================================================== --}}
@@ -476,7 +450,11 @@
 
             @if ($errors->any())
                 <div class="alert alert-danger rsvp-alert" role="alert">
-                    <strong><i class="bi bi-exclamation-circle me-1"></i> Periksa kembali formulir:</strong>
+                    <strong>
+                        <i class="bi bi-exclamation-circle me-1"></i>
+                        Periksa kembali formulir:
+                    </strong>
+
                     <ul class="mb-0 mt-2">
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -491,8 +469,10 @@
 
                 <div class="mb-3">
                     <label for="guest_name" class="form-label">
-                        Nama Lengkap <span style="color:var(--rose-dark)">*</span>
+                        Nama Lengkap
+                        <span style="color:var(--rose-dark)">*</span>
                     </label>
+
                     <input
                         type="text"
                         id="guest_name"
@@ -508,8 +488,10 @@
 
                 <div class="mb-3">
                     <label for="phone" class="form-label">
-                        Nomor WhatsApp <span class="text-muted fw-normal">(Opsional)</span>
+                        Nomor WhatsApp
+                        <span class="text-muted fw-normal">(Opsional)</span>
                     </label>
+
                     <input
                         type="tel"
                         id="phone"
@@ -524,8 +506,10 @@
 
                 <div class="mb-3">
                     <label for="attendance_status" class="form-label">
-                        Konfirmasi Kehadiran <span style="color:var(--rose-dark)">*</span>
+                        Konfirmasi Kehadiran
+                        <span style="color:var(--rose-dark)">*</span>
                     </label>
+
                     <select
                         id="attendance_status"
                         name="attendance_status"
@@ -533,12 +517,15 @@
                         required
                     >
                         <option value="">-- Pilih Kehadiran --</option>
+
                         <option value="hadir" @selected(old('attendance_status') === 'hadir')>
                             Saya akan hadir
                         </option>
+
                         <option value="tidak_hadir" @selected(old('attendance_status') === 'tidak_hadir')>
                             Maaf, saya tidak dapat hadir
                         </option>
+
                         <option value="ragu_ragu" @selected(old('attendance_status') === 'ragu_ragu')>
                             Masih belum pasti
                         </option>
@@ -547,8 +534,10 @@
 
                 <div class="mb-3">
                     <label for="guest_count" class="form-label">
-                        Jumlah Orang yang Hadir <span style="color:var(--rose-dark)">*</span>
+                        Jumlah Orang yang Hadir
+                        <span style="color:var(--rose-dark)">*</span>
                     </label>
+
                     <select
                         id="guest_count"
                         name="guest_count"
@@ -561,6 +550,7 @@
                             </option>
                         @endfor
                     </select>
+
                     <small class="rsvp-hint">
                         Jika memilih tidak hadir, jumlah orang yang hadir akan dicatat sebagai nol.
                     </small>
@@ -568,8 +558,10 @@
 
                 <div class="mb-4">
                     <label for="message" class="form-label">
-                        Ucapan dan Doa <span class="text-muted fw-normal">(Opsional)</span>
+                        Ucapan dan Doa
+                        <span class="text-muted fw-normal">(Opsional)</span>
                     </label>
+
                     <textarea
                         id="message"
                         name="message"
@@ -585,6 +577,7 @@
                     Kirim Konfirmasi
                 </button>
             </form>
+
         </div>
     </section>
 
@@ -599,9 +592,7 @@
 
         <p class="eyebrow">With Love & Gratitude</p>
 
-        <h2 class="closing-title">
-            Merupakan Kehormatan
-        </h2>
+        <h2 class="closing-title">Merupakan Kehormatan</h2>
 
         <div class="ornament">❦</div>
 
@@ -621,6 +612,7 @@
         <div class="closing-names">
             {{ $invitation->groom_name }} &amp; {{ $invitation->bride_name }}
         </div>
+
     </section>
 
     {{-- ================================================== --}}
@@ -636,8 +628,11 @@
 
 </main>
 
-{{-- Tombol cepat: Beranda dan Musik --}}
+{{-- ================================================== --}}
+{{-- TOMBOL BERANDA DAN MUSIK --}}
+{{-- ================================================== --}}
 <div class="page-tools" aria-label="Kontrol undangan">
+
     <a href="https://wedding-wilk-three.vercel.app/"
        class="page-tool"
        aria-label="Kembali ke beranda Wedding Invitation">
@@ -653,94 +648,136 @@
         <i class="bi bi-music-note-beamed" id="musicIcon"></i>
         <span id="musicLabel">Putar Musik</span>
     </button>
+
 </div>
 
-{{--
-    Simpan file musik milikmu di:
-    public/audio/music-pernikahan.mp3
-    Musik akan mulai setelah pengunjung menekan tombol Putar Musik
-    atau Buka Undangan karena browser umumnya membatasi autoplay.
---}}
+{{-- ================================================== --}}
+{{-- FILE MUSIK --}}
+{{-- Lokasi fisik: storage/app/public/images/music-pernikahan.mp3 --}}
+{{-- URL publik: /storage/images/music-pernikahan.mp3 --}}
+{{-- ================================================== --}}
 <audio id="weddingMusic" loop preload="none">
-      <source src="{{ url('storage/audio/music-pernikahan.mp3') }}" type="audio/mpeg">
+    <source src="{{ url('storage/images/music-pernikahan.mp3') }}" type="audio/mpeg">
 </audio>
 
+{{-- SweetAlert2 --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const music = document.getElementById('weddingMusic');
-        const musicToggle = document.getElementById('musicToggle');
-        const musicIcon = document.getElementById('musicIcon');
-        const musicLabel = document.getElementById('musicLabel');
-        const openInvitation = document.getElementById('openInvitation');
+document.addEventListener('DOMContentLoaded', function () {
 
-        function updateMusicButton(isPlaying) {
-            musicToggle.classList.toggle('music-playing', isPlaying);
-            musicToggle.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
-            musicToggle.setAttribute('aria-label', isPlaying ? 'Matikan musik undangan' : 'Putar musik undangan');
-            musicIcon.className = isPlaying ? 'bi bi-pause-circle-fill' : 'bi bi-music-note-beamed';
-            musicLabel.textContent = isPlaying ? 'Matikan Musik' : 'Putar Musik';
-        }
+    const music = document.getElementById('weddingMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    const musicIcon = document.getElementById('musicIcon');
+    const musicLabel = document.getElementById('musicLabel');
+    const openInvitation = document.getElementById('openInvitation');
 
-        async function startMusic() {
-            try {
-                await music.play();
-                updateMusicButton(true);
-            } catch (error) {
-                updateMusicButton(false);
-                Swal.fire({
-                    icon: 'info',
-                    title: 'Musik Belum Tersedia',
-                    text: 'Simpan file musik MP3 di public/audio/music-pernikahan.mp3, lalu coba putar kembali.',
-                    confirmButtonText: 'Mengerti',
-                    confirmButtonColor: '#b07272',
-                    background: '#fffaf7',
-                    color: '#4a3f3a'
-                });
-            }
-        }
+    function updateMusicButton(isPlaying) {
+        musicToggle.classList.toggle('music-playing', isPlaying);
 
-        musicToggle.addEventListener('click', function () {
-            if (music.paused) {
-                startMusic();
-            } else {
-                music.pause();
-                updateMusicButton(false);
-            }
-        });
+        musicToggle.setAttribute(
+            'aria-pressed',
+            isPlaying ? 'true' : 'false'
+        );
 
-        // Tombol Buka Undangan juga mencoba memulai musik.
-        if (openInvitation) {
-            openInvitation.addEventListener('click', function () {
-                if (music.paused) {
-                    startMusic();
-                }
-            });
-        }
+        musicToggle.setAttribute(
+            'aria-label',
+            isPlaying ? 'Matikan musik undangan' : 'Putar musik undangan'
+        );
 
-        music.addEventListener('ended', function () {
+        musicIcon.className = isPlaying
+            ? 'bi bi-pause-circle-fill'
+            : 'bi bi-music-note-beamed';
+
+        musicLabel.textContent = isPlaying
+            ? 'Matikan Musik'
+            : 'Putar Musik';
+    }
+
+    async function startMusic() {
+        try {
+            await music.play();
+            updateMusicButton(true);
+        } catch (error) {
             updateMusicButton(false);
-        });
 
-        // Popup sukses setelah controller mengirim flash message.
-        @if (session('success'))
+            console.error('Musik gagal diputar:', error);
+
             Swal.fire({
-                icon: 'success',
-                title: 'RSVP Berhasil Dikirim!',
-                text: @json(session('success')),
-                confirmButtonText: 'Terima Kasih',
+                icon: 'error',
+                title: 'Musik Gagal Diputar',
+                html: `
+                    Periksa apakah file musik tersedia di:<br>
+                    <code>storage/app/public/images/music-pernikahan.mp3</code>
+                    <br><br>
+                    Pastikan juga perintah
+                    <code>php artisan storage:link</code>
+                    sudah dijalankan.
+                `,
+                confirmButtonText: 'Mengerti',
                 confirmButtonColor: '#b07272',
                 background: '#fffaf7',
-                color: '#4a3f3a',
-                iconColor: '#b07272'
-            }).then(function () {
-                const rsvpSection = document.getElementById('rsvp');
-                if (rsvpSection) {
-                    rsvpSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                color: '#4a3f3a'
             });
-        @endif
+        }
+    }
+
+    // Tombol Putar Musik / Matikan Musik
+    musicToggle.addEventListener('click', function () {
+        if (music.paused) {
+            startMusic();
+        } else {
+            music.pause();
+            updateMusicButton(false);
+        }
     });
+
+    // Tombol Buka Undangan mencoba memulai musik
+    if (openInvitation) {
+        openInvitation.addEventListener('click', function () {
+            if (music.paused) {
+                startMusic();
+            }
+        });
+    }
+
+    // Sinkronisasi tombol jika musik berhenti
+    music.addEventListener('pause', function () {
+        updateMusicButton(false);
+    });
+
+    music.addEventListener('play', function () {
+        updateMusicButton(true);
+    });
+
+    music.addEventListener('ended', function () {
+        updateMusicButton(false);
+    });
+
+    // Popup setelah RSVP berhasil dikirim
+    @if (session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'RSVP Berhasil Dikirim!',
+            text: @json(session('success')),
+            confirmButtonText: 'Terima Kasih',
+            confirmButtonColor: '#b07272',
+            background: '#fffaf7',
+            color: '#4a3f3a',
+            iconColor: '#b07272'
+        }).then(function () {
+            const rsvpSection = document.getElementById('rsvp');
+
+            if (rsvpSection) {
+                rsvpSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }); 
+    @endif
+
+});
 </script>
 
 </body>
