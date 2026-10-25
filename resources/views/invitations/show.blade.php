@@ -25,9 +25,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap"
           rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/show.css') }}">
 
-    
+        <link rel="stylesheet" href="{{ asset('css/show.css') }}">
+
 </head>
 
 <body>
@@ -86,7 +86,7 @@
             @endif
 
             <div class="hero-actions">
-                <a href="#pembuka" class="btn-wedding">
+                <a href="#pembuka" class="btn-wedding" id="openInvitation">
                     <i class="bi bi-envelope-open-heart"></i>
                     Buka Undangan
                 </a>
@@ -474,13 +474,6 @@
 
         <div class="rsvp-card">
 
-            @if (session('success'))
-                <div class="alert alert-success rsvp-alert" role="status">
-                    <i class="bi bi-check-circle-fill me-2"></i>
-                    {{ session('success') }}
-                </div>
-            @endif
-
             @if ($errors->any())
                 <div class="alert alert-danger rsvp-alert" role="alert">
                     <strong><i class="bi bi-exclamation-circle me-1"></i> Periksa kembali formulir:</strong>
@@ -642,6 +635,113 @@
     </footer>
 
 </main>
+
+{{-- Tombol cepat: Beranda dan Musik --}}
+<div class="page-tools" aria-label="Kontrol undangan">
+    <a href="https://wedding-wilk-three.vercel.app/"
+       class="page-tool"
+       aria-label="Kembali ke beranda Wedding Invitation">
+        <i class="bi bi-house-heart-fill"></i>
+        <span>Beranda</span>
+    </a>
+
+    <button type="button"
+            class="page-tool"
+            id="musicToggle"
+            aria-label="Putar musik undangan"
+            aria-pressed="false">
+        <i class="bi bi-music-note-beamed" id="musicIcon"></i>
+        <span id="musicLabel">Putar Musik</span>
+    </button>
+</div>
+
+{{--
+    Simpan file musik milikmu di:
+    public/audio/music-pernikahan.mp3
+    Musik akan mulai setelah pengunjung menekan tombol Putar Musik
+    atau Buka Undangan karena browser umumnya membatasi autoplay.
+--}}
+<audio id="weddingMusic" loop preload="none">
+    <source src="{{ asset('audio/music-pernikahan.mp3') }}" type="audio/mpeg">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const music = document.getElementById('weddingMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const musicIcon = document.getElementById('musicIcon');
+        const musicLabel = document.getElementById('musicLabel');
+        const openInvitation = document.getElementById('openInvitation');
+
+        function updateMusicButton(isPlaying) {
+            musicToggle.classList.toggle('music-playing', isPlaying);
+            musicToggle.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
+            musicToggle.setAttribute('aria-label', isPlaying ? 'Matikan musik undangan' : 'Putar musik undangan');
+            musicIcon.className = isPlaying ? 'bi bi-pause-circle-fill' : 'bi bi-music-note-beamed';
+            musicLabel.textContent = isPlaying ? 'Matikan Musik' : 'Putar Musik';
+        }
+
+        async function startMusic() {
+            try {
+                await music.play();
+                updateMusicButton(true);
+            } catch (error) {
+                updateMusicButton(false);
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Musik Belum Tersedia',
+                    text: 'Simpan file musik MP3 di public/audio/music-pernikahan.mp3, lalu coba putar kembali.',
+                    confirmButtonText: 'Mengerti',
+                    confirmButtonColor: '#b07272',
+                    background: '#fffaf7',
+                    color: '#4a3f3a'
+                });
+            }
+        }
+
+        musicToggle.addEventListener('click', function () {
+            if (music.paused) {
+                startMusic();
+            } else {
+                music.pause();
+                updateMusicButton(false);
+            }
+        });
+
+        // Tombol Buka Undangan juga mencoba memulai musik.
+        if (openInvitation) {
+            openInvitation.addEventListener('click', function () {
+                if (music.paused) {
+                    startMusic();
+                }
+            });
+        }
+
+        music.addEventListener('ended', function () {
+            updateMusicButton(false);
+        });
+
+        // Popup sukses setelah controller mengirim flash message.
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'RSVP Berhasil Dikirim!',
+                text: @json(session('success')),
+                confirmButtonText: 'Terima Kasih',
+                confirmButtonColor: '#b07272',
+                background: '#fffaf7',
+                color: '#4a3f3a',
+                iconColor: '#b07272'
+            }).then(function () {
+                const rsvpSection = document.getElementById('rsvp');
+                if (rsvpSection) {
+                    rsvpSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        @endif
+    });
+</script>
 
 </body>
 </html>

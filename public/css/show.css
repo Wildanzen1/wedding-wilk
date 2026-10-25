@@ -1,5 +1,4 @@
-
-        :root {
+:root {
             --cream: #fbf7f2;
             --cream-dark: #f4eae0;
             --blush: #f6e6e2;
@@ -806,4 +805,88 @@
             line-height: 1.8;
         }
 
-    
+/* ===== Floating Beranda and Music Controls ===== */
+.page-tools {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1050;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.page-tool {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 43px;
+    padding: 10px 15px;
+    border: 1px solid var(--gold-soft);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, .97);
+    color: var(--rose-dark);
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 5px 18px rgba(74, 63, 58, .13);
+    cursor: pointer;
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    backdrop-filter: blur(8px);
+}
+
+.page-tool:hover {
+    transform: translateY(-2px);
+    background: #fffaf7;
+    color: var(--rose-dark);
+    box-shadow: 0 8px 22px rgba(74, 63, 58, .16);
+}
+
+.page-tool i {
+    font-size: 15px;
+}
+
+.page-tool.music-playing {
+    border-color: var(--rose-dark);
+    background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+    color: #fff;
+}
+
+.page-tool.music-playing:hover {
+    background: #925b5d;
+    color: #fff;
+}
+
+.rsvp-card .alert {
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.swal2-popup {
+    border: 1px solid var(--gold-soft) !important;
+    border-radius: 20px !important;
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.swal2-title {
+    color: var(--rose-dark) !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 32px !important;
+}
+
+@media (max-width: 576px) {
+    .page-tools {
+        right: 12px;
+        bottom: 12px;
+        gap: 8px;
+    }
+
+    .page-tool {
+        min-height: 40px;
+        padding: 9px 12px;
+        font-size: 10px;
+    }
+}
