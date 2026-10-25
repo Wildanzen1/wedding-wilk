@@ -1,3 +1,8 @@
+@php
+    $photoUrl = fn ($path) => app()->environment('production')
+        ? 'https://cdn.jsdelivr.net/gh/Wildanzen1/wedding-wilk@main/public/uploads/' . ltrim($path, '/')
+        : asset('storage/' . $path);
+@endphp
 
 <!DOCTYPE html>
 <html lang="id">
@@ -41,7 +46,7 @@
 
         @if ($invitation->cover_photo)
             <img
-                src="{{ asset('storage/' . $invitation->cover_photo) }}"
+                src="{{ $photoUrl($invitation->cover_photo) }}"
                 alt="Foto sampul undangan {{ $invitation->groom_name }} dan {{ $invitation->bride_name }}"
                 class="hero-image"
                 fetchpriority="high"
@@ -142,7 +147,7 @@
                 <div class="person-photo-frame">
                     @if ($invitation->groom_photo)
                         <img
-                            src="{{ asset('storage/' . $invitation->groom_photo) }}"
+                            src="{{ $photoUrl($invitation->groom_photo) }}"
                             alt="Foto {{ $invitation->groom_name }}"
                             class="person-photo"
                             loading="lazy"
@@ -160,7 +165,10 @@
                     {{ $invitation->groom_name }}
                 </h3>
 
-                <p class="person-description">Mempelai Pria</p>
+                <p class="person-description">
+                    Mempelai Pria
+                </p>
+
             </div>
 
             {{-- Ornamen hati --}}
@@ -174,7 +182,7 @@
                 <div class="person-photo-frame">
                     @if ($invitation->bride_photo)
                         <img
-                            src="{{ asset('storage/' . $invitation->bride_photo) }}"
+                            src="{{ $photoUrl($invitation->bride_photo) }}"
                             alt="Foto {{ $invitation->bride_name }}"
                             class="person-photo"
                             loading="lazy"
@@ -192,7 +200,10 @@
                     {{ $invitation->bride_name }}
                 </h3>
 
-                <p class="person-description">Mempelai Wanita</p>
+                <p class="person-description">
+                    Mempelai Wanita
+                </p>
+
             </div>
 
         </div>
@@ -592,7 +603,9 @@
 
         <p class="eyebrow">With Love & Gratitude</p>
 
-        <h2 class="closing-title">Merupakan Kehormatan</h2>
+        <h2 class="closing-title">
+            Merupakan Kehormatan
+        </h2>
 
         <div class="ornament">❦</div>
 
@@ -653,8 +666,11 @@
 
 </div>
 
-{{-- Sumber 1: /storage/... (Vercel: public/uploads/images, lokal: storage/app/public/images) --}}
-{{-- Sumber 2: cadangan lewat jsDelivr (repo GitHub harus public) --}}
+{{-- ================================================== --}}
+{{-- FILE MUSIK --}}
+{{-- Lokal: storage/app/public/images/music-pernikahan.mp3 --}}
+{{-- Produksi: public/uploads/images/music-pernikahan.mp3 --}}
+{{-- ================================================== --}}
 <audio id="weddingMusic" loop preload="none">
     <source src="{{ url('storage/images/music-pernikahan.mp3') }}" type="audio/mpeg">
     <source src="https://cdn.jsdelivr.net/gh/Wildanzen1/wedding-wilk@main/public/uploads/images/music-pernikahan.mp3" type="audio/mpeg">
@@ -674,22 +690,32 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateMusicButton(isPlaying) {
         musicToggle.classList.toggle('music-playing', isPlaying);
         musicToggle.classList.toggle('music-off', !isPlaying);
-        musicToggle.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
-        musicToggle.setAttribute('aria-label', isPlaying ? 'Matikan musik undangan' : 'Putar musik undangan');
-        musicLabel.textContent = isPlaying ? 'Matikan Musik' : 'Putar Musik';
+
+        musicToggle.setAttribute(
+            'aria-pressed',
+            isPlaying ? 'true' : 'false'
+        );
+
+        musicToggle.setAttribute(
+            'aria-label',
+            isPlaying ? 'Matikan musik undangan' : 'Putar musik undangan'
+        );
+
+        musicLabel.textContent = isPlaying
+            ? 'Matikan Musik'
+            : 'Putar Musik';
     }
 
     async function startMusic() {
         try {
             await music.play();
         } catch (error) {
-            // Tanpa notif, tombol tetap dicoret
             console.error('Musik gagal diputar:', error);
             updateMusicButton(false);
         }
     }
 
-    // Klik tombol: nyalakan / matikan
+    // Tombol Putar Musik / Matikan Musik
     musicToggle.addEventListener('click', function () {
         if (music.paused) {
             startMusic();
@@ -698,7 +724,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Tombol Buka Undangan juga memulai musik
+    // Tombol Buka Undangan juga mencoba memulai musik
     if (openInvitation) {
         openInvitation.addEventListener('click', function () {
             if (music.paused) {
@@ -707,10 +733,18 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Tombol selalu ikut status musik yang sebenarnya
-    music.addEventListener('play', function () { updateMusicButton(true); });
-    music.addEventListener('pause', function () { updateMusicButton(false); });
-    music.addEventListener('ended', function () { updateMusicButton(false); });
+    // Sinkronisasi tombol mengikuti status musik
+    music.addEventListener('play', function () {
+        updateMusicButton(true);
+    });
+
+    music.addEventListener('pause', function () {
+        updateMusicButton(false);
+    });
+
+    music.addEventListener('ended', function () {
+        updateMusicButton(false);
+    });
 
     // Popup setelah RSVP berhasil dikirim
     @if (session('success'))
@@ -725,8 +759,12 @@ document.addEventListener('DOMContentLoaded', function () {
             iconColor: '#b07272'
         }).then(function () {
             const rsvpSection = document.getElementById('rsvp');
+
             if (rsvpSection) {
-                rsvpSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                rsvpSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }
         });
     @endif
