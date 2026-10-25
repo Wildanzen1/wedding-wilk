@@ -641,23 +641,23 @@
     </a>
 
     <button type="button"
-            class="page-tool"
+            class="page-tool music-off"
             id="musicToggle"
             aria-label="Putar musik undangan"
             aria-pressed="false">
-        <i class="bi bi-music-note-beamed" id="musicIcon"></i>
+        <span class="music-icon-wrap">
+            <i class="bi bi-music-note-beamed"></i>
+        </span>
         <span id="musicLabel">Putar Musik</span>
     </button>
 
 </div>
 
-{{-- ================================================== --}}
-{{-- FILE MUSIK --}}
-{{-- Lokasi fisik: storage/app/public/images/music-pernikahan.mp3 --}}
-{{-- URL publik: /storage/images/music-pernikahan.mp3 --}}
-{{-- ================================================== --}}
+{{-- Sumber 1: /storage/... (Vercel: public/uploads/images, lokal: storage/app/public/images) --}}
+{{-- Sumber 2: cadangan lewat jsDelivr (repo GitHub harus public) --}}
 <audio id="weddingMusic" loop preload="none">
     <source src="{{ url('storage/images/music-pernikahan.mp3') }}" type="audio/mpeg">
+    <source src="https://cdn.jsdelivr.net/gh/Wildanzen1/wedding-wilk@main/public/uploads/images/music-pernikahan.mp3" type="audio/mpeg">
 </audio>
 
 {{-- SweetAlert2 --}}
@@ -668,71 +668,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const music = document.getElementById('weddingMusic');
     const musicToggle = document.getElementById('musicToggle');
-    const musicIcon = document.getElementById('musicIcon');
     const musicLabel = document.getElementById('musicLabel');
     const openInvitation = document.getElementById('openInvitation');
 
     function updateMusicButton(isPlaying) {
         musicToggle.classList.toggle('music-playing', isPlaying);
-
-        musicToggle.setAttribute(
-            'aria-pressed',
-            isPlaying ? 'true' : 'false'
-        );
-
-        musicToggle.setAttribute(
-            'aria-label',
-            isPlaying ? 'Matikan musik undangan' : 'Putar musik undangan'
-        );
-
-        musicIcon.className = isPlaying
-            ? 'bi bi-pause-circle-fill'
-            : 'bi bi-music-note-beamed';
-
-        musicLabel.textContent = isPlaying
-            ? 'Matikan Musik'
-            : 'Putar Musik';
+        musicToggle.classList.toggle('music-off', !isPlaying);
+        musicToggle.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
+        musicToggle.setAttribute('aria-label', isPlaying ? 'Matikan musik undangan' : 'Putar musik undangan');
+        musicLabel.textContent = isPlaying ? 'Matikan Musik' : 'Putar Musik';
     }
 
     async function startMusic() {
         try {
             await music.play();
-            updateMusicButton(true);
         } catch (error) {
-            updateMusicButton(false);
-
+            // Tanpa notif, tombol tetap dicoret
             console.error('Musik gagal diputar:', error);
-
-            Swal.fire({
-                icon: 'error',
-                title: 'Musik Gagal Diputar',
-                html: `
-                    Periksa apakah file musik tersedia di:<br>
-                    <code>storage/app/public/images/music-pernikahan.mp3</code>
-                    <br><br>
-                    Pastikan juga perintah
-                    <code>php artisan storage:link</code>
-                    sudah dijalankan.
-                `,
-                confirmButtonText: 'Mengerti',
-                confirmButtonColor: '#b07272',
-                background: '#fffaf7',
-                color: '#4a3f3a'
-            });
+            updateMusicButton(false);
         }
     }
 
-    // Tombol Putar Musik / Matikan Musik
+    // Klik tombol: nyalakan / matikan
     musicToggle.addEventListener('click', function () {
         if (music.paused) {
             startMusic();
         } else {
             music.pause();
-            updateMusicButton(false);
         }
     });
 
-    // Tombol Buka Undangan mencoba memulai musik
+    // Tombol Buka Undangan juga memulai musik
     if (openInvitation) {
         openInvitation.addEventListener('click', function () {
             if (music.paused) {
@@ -741,18 +707,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Sinkronisasi tombol jika musik berhenti
-    music.addEventListener('pause', function () {
-        updateMusicButton(false);
-    });
-
-    music.addEventListener('play', function () {
-        updateMusicButton(true);
-    });
-
-    music.addEventListener('ended', function () {
-        updateMusicButton(false);
-    });
+    // Tombol selalu ikut status musik yang sebenarnya
+    music.addEventListener('play', function () { updateMusicButton(true); });
+    music.addEventListener('pause', function () { updateMusicButton(false); });
+    music.addEventListener('ended', function () { updateMusicButton(false); });
 
     // Popup setelah RSVP berhasil dikirim
     @if (session('success'))
@@ -767,14 +725,10 @@ document.addEventListener('DOMContentLoaded', function () {
             iconColor: '#b07272'
         }).then(function () {
             const rsvpSection = document.getElementById('rsvp');
-
             if (rsvpSection) {
-                rsvpSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                rsvpSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
-        }); 
+        });
     @endif
 
 });
