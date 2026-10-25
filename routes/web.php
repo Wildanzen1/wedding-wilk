@@ -14,6 +14,12 @@ Route::view('/', 'dashboardlogin')->name('dashboardlogin');
 // Halaman Tentang Saya
 Route::view('/tentang', 'tentang')->name('tentang');
 
+Route::get('/storage/{path}', function (string $path) {
+    $file = storage_path('app/public/' . $path);
+    abort_unless(is_file($file), 404);
+    return response()->file($file);
+})->where('path', '.*');
+
 Route::post('/undangan/{slug}/rsvp', [
     RsvpController::class,
     'store',

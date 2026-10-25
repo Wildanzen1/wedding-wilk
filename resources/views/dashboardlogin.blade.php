@@ -192,9 +192,9 @@
                         </h2>
 
                         <div class="preview-names">
-                            Nama Pria
+                            Wildan
                             <span class="preview-ampersand">&amp;</span>
-                            Nama Wanita
+                            CiwCiw
                         </div>
 
                         <div class="preview-line"></div>

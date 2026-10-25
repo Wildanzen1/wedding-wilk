@@ -5,7 +5,8 @@
 
 @section('content')
 
-link rel="stylesheet" href="{{ asset('css/create.css') }}">
+<link rel="stylesheet" href="{{ asset('css/create.css') }}">
+
 
 <div class="create-wedding">
 
