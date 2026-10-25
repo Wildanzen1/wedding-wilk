@@ -7,7 +7,8 @@
   { "src": "/build/(.*)", "dest": "/public/build/$1" },
   { "src": "/storage/(.*)", "dest": "/public/uploads/$1" },
   { "src": "/(css|js|images)/(.*)", "dest": "/public/$1/$2" },
-  { "src": "/(.*)", "dest": "/api/index.php" }
+  { "src": "/(.*)", "dest": "/api/index.php" },
+  { "src": "/(css|js|images|audio)/(.*)", "dest": "/public/$1/$2" }
 ],
   "env": {
     "APP_ENV": "production",
@@ -22,5 +23,6 @@
     "CACHE_DRIVER": "array",
     "CACHE_STORE": "array",
     "LOG_CHANNEL": "stderr"
+
   }
 }
