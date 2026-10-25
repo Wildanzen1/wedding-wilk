@@ -662,7 +662,7 @@
     atau Buka Undangan karena browser umumnya membatasi autoplay.
 --}}
 <audio id="weddingMusic" loop preload="none">
-   <source src="{{ asset('images/music-pernikahan.mp3') }}" type="audio/mpeg">
+      <source src="{{ url('storage/audio/music-pernikahan.mp3') }}" type="audio/mpeg">
 </audio>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
