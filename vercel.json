@@ -5,6 +5,7 @@
   },
   "routes": [
     { "src": "/build/(.*)", "dest": "/public/build/$1" },
+    { "src": "/(css|js|images)/(.*)", "dest": "/public/$1/$2" },
     { "src": "/(.*)", "dest": "/api/index.php" }
   ],
   "env": {
@@ -19,7 +20,6 @@
     "VIEW_COMPILED_PATH": "/tmp/views",
     "CACHE_DRIVER": "array",
     "CACHE_STORE": "array",
-    "SESSION_SAME_SITE": "lax",
     "LOG_CHANNEL": "stderr"
   }
 }
