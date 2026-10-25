@@ -1,3 +1,8 @@
+@php
+    $profilePhoto = app()->environment('production')
+        ? 'https://cdn.jsdelivr.net/gh/Wildanzen1/wedding-wilk@main/public/uploads/images/foto-profil-wildan.jpeg'
+        : asset('storage/images/foto-profil-wildan.jpeg');
+@endphp
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -102,7 +107,7 @@
 
                         <div class="profile-frame">
                             <img
-                                src="{{ asset('storage/images/foto-profil-wildan.jpeg') }}"
+                                src="{{ $profilePhoto }}"
                                 alt="Foto Ahmad Wildan Thoatullah"
                                 class="profile-photo"
                                 fetchpriority="high"

@@ -669,12 +669,15 @@
 {{-- ================================================== --}}
 {{-- FILE MUSIK --}}
 {{-- Lokal: storage/app/public/images/music-pernikahan.mp3 --}}
-{{-- Produksi: public/uploads/images/music-pernikahan.mp3 --}}
+{{-- Produksi: lewat jsDelivr (dari public/uploads/images di GitHub) --}}
 {{-- ================================================== --}}
-<audio id="weddingMusic" loop preload="none">
-    <source src="{{ url('storage/images/music-pernikahan.mp3') }}" type="audio/mpeg">
-    <source src="https://cdn.jsdelivr.net/gh/Wildanzen1/wedding-wilk@main/public/uploads/images/music-pernikahan.mp3" type="audio/mpeg">
-</audio>
+@php
+    $musicUrl = app()->environment('production')
+        ? 'https://cdn.jsdelivr.net/gh/Wildanzen1/wedding-wilk@main/public/uploads/images/music-pernikahan.mp3'
+        : asset('storage/images/music-pernikahan.mp3');
+@endphp
+
+<audio id="weddingMusic" src="{{ $musicUrl }}" loop preload="none" playsinline></audio>
 
 {{-- SweetAlert2 --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -691,23 +694,21 @@ document.addEventListener('DOMContentLoaded', function () {
         musicToggle.classList.toggle('music-playing', isPlaying);
         musicToggle.classList.toggle('music-off', !isPlaying);
 
-        musicToggle.setAttribute(
-            'aria-pressed',
-            isPlaying ? 'true' : 'false'
-        );
-
+        musicToggle.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
         musicToggle.setAttribute(
             'aria-label',
             isPlaying ? 'Matikan musik undangan' : 'Putar musik undangan'
         );
 
-        musicLabel.textContent = isPlaying
-            ? 'Matikan Musik'
-            : 'Putar Musik';
+        musicLabel.textContent = isPlaying ? 'Matikan Musik' : 'Putar Musik';
     }
 
     async function startMusic() {
         try {
+            // Di Android, file perlu dimuat dulu sebelum diputar
+            if (music.readyState === 0) {
+                music.load();
+            }
             await music.play();
         } catch (error) {
             console.error('Musik gagal diputar:', error);
@@ -733,18 +734,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Sinkronisasi tombol mengikuti status musik
-    music.addEventListener('play', function () {
-        updateMusicButton(true);
-    });
-
-    music.addEventListener('pause', function () {
-        updateMusicButton(false);
-    });
-
-    music.addEventListener('ended', function () {
-        updateMusicButton(false);
-    });
+    // Tombol selalu mengikuti status musik yang sebenarnya
+    music.addEventListener('play', function () { updateMusicButton(true); });
+    music.addEventListener('pause', function () { updateMusicButton(false); });
+    music.addEventListener('ended', function () { updateMusicButton(false); });
+    music.addEventListener('error', function () { updateMusicButton(false); });
 
     // Popup setelah RSVP berhasil dikirim
     @if (session('success'))
