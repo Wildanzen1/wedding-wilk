@@ -3,177 +3,7 @@
 @section('title', 'Rekap RSVP')
 
 @section('content')
-<style>
-    .rsvp-admin {
-        --rose: #b07272;
-        --blush: #f6e6e2;
-        --cream: #fbf7f2;
-        --gold: #b8975a;
-        --gold-soft: #ecdfc4;
-        --ink: #4a3f3a;
-        --muted: #8c7f78;
-
-        color: var(--ink);
-        font-family: 'Poppins', sans-serif;
-    }
-
-    .rsvp-admin .page-heading {
-        padding: 24px;
-        border: 1px solid var(--gold-soft);
-        border-radius: 18px;
-        background: linear-gradient(120deg, white, var(--blush));
-    }
-
-    .rsvp-admin .page-title {
-        color: var(--rose);
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 34px;
-        font-weight: 700;
-    }
-
-    .rsvp-admin .summary-card {
-        height: 100%;
-        padding: 20px;
-        border: 1px solid var(--gold-soft);
-        border-radius: 16px;
-        background: white;
-        box-shadow: 0 5px 20px rgba(74, 63, 58, .035);
-    }
-
-    .rsvp-admin .summary-label {
-        color: var(--muted);
-        font-size: 11px;
-    }
-
-    .rsvp-admin .summary-number {
-        margin-top: 8px;
-        color: var(--ink);
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 34px;
-        font-weight: 700;
-    }
-
-    .rsvp-admin .summary-icon {
-        display: flex;
-        width: 40px;
-        height: 40px;
-        align-items: center;
-        justify-content: center;
-        border-radius: 12px;
-        background: var(--blush);
-        color: var(--rose);
-        font-size: 18px;
-    }
-
-    .rsvp-admin .table-card {
-        overflow: hidden;
-        border: 1px solid var(--gold-soft);
-        border-radius: 17px;
-        background: white;
-        box-shadow: 0 5px 20px rgba(74, 63, 58, .035);
-    }
-
-    .rsvp-admin .table-card-header {
-        padding: 20px;
-        border-bottom: 1px solid var(--gold-soft);
-        background: #fffaf7;
-    }
-
-    .rsvp-admin .table-title {
-        margin: 0;
-        color: var(--rose);
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 26px;
-        font-weight: 700;
-    }
-
-    .rsvp-admin .table {
-        margin: 0;
-        font-size: 11px;
-        vertical-align: middle;
-    }
-
-    .rsvp-admin .table thead th {
-        padding: 15px;
-        border-bottom: 1px solid var(--gold-soft);
-        background: var(--cream);
-        color: var(--muted);
-        font-size: 10px;
-        font-weight: 600;
-        white-space: nowrap;
-    }
-
-    .rsvp-admin .table tbody td {
-        padding: 15px;
-        border-color: #f2e9e0;
-        color: var(--ink);
-    }
-
-    .rsvp-admin .guest-name {
-        font-weight: 600;
-    }
-
-    .rsvp-admin .guest-note {
-        max-width: 250px;
-        color: var(--muted);
-        white-space: pre-line;
-        overflow-wrap: anywhere;
-    }
-
-    .rsvp-admin .status {
-        display: inline-block;
-        padding: 6px 10px;
-        border-radius: 30px;
-        font-size: 10px;
-        font-weight: 600;
-        white-space: nowrap;
-    }
-
-    .rsvp-admin .status-hadir {
-        background: #e8f4e8;
-        color: #387343;
-    }
-
-    .rsvp-admin .status-tidak {
-        background: #f9e6e4;
-        color: #a44747;
-    }
-
-    .rsvp-admin .status-ragu {
-        background: #fff2d8;
-        color: #906b26;
-    }
-
-    .rsvp-admin .pagination {
-        margin: 0;
-        gap: 4px;
-    }
-
-    .rsvp-admin .page-link {
-        border-color: var(--gold-soft);
-        color: var(--rose);
-        font-size: 11px;
-    }
-
-    .rsvp-admin .active > .page-link {
-        border-color: var(--rose);
-        background: var(--rose);
-        color: white;
-    }
-
-    .rsvp-admin .empty-state {
-        padding: 45px 20px;
-        color: var(--muted);
-        text-align: center;
-    }
-
-    .rsvp-admin .empty-state i {
-        display: block;
-        margin-bottom: 12px;
-        color: var(--rose);
-        font-size: 38px;
-    }
-</style>
+<link rel="stylesheet" href="{{ asset('css/rvsp.css') }}">
 
 <div class="rsvp-admin">
 
@@ -189,6 +19,38 @@
             Daftar konfirmasi kehadiran tamu dari seluruh undangan.
         </p>
     </div>
+
+    {{-- Notifikasi flash jika admin diarahkan dengan pesan sukses --}}
+    @if (session('success'))
+        <div class="alert alert-success d-flex align-items-start gap-2 mb-4"
+             role="status"
+             style="border:1px solid #cfe5d1;border-radius:14px;font-size:12px;">
+            <i class="bi bi-check-circle-fill mt-1"></i>
+            <div>{{ session('success') }}</div>
+        </div>
+    @endif
+
+    {{-- Pemberitahuan jika sudah ada RSVP tersimpan --}}
+    @if ($totalRsvp > 0)
+        <div class="rsvp-notification" role="status">
+            <div class="rsvp-notification-icon">
+                <i class="bi bi-bell-fill"></i>
+            </div>
+
+            <div>
+                <div class="rsvp-notification-title">
+                    <i class="bi bi-check-circle-fill me-1"></i>
+                    Tanggapan RSVP Sudah Masuk
+                </div>
+
+                <p class="rsvp-notification-text">
+                    Ada {{ $totalRsvp }} konfirmasi RSVP yang tersimpan di sistem.
+                    Periksa tabel di bawah untuk melihat status kehadiran,
+                    jumlah tamu, dan ucapan dari para tamu.
+                </p>
+            </div>
+        </div>
+    @endif
 
     {{-- Ringkasan --}}
     <div class="row g-3 mb-4">
@@ -274,9 +136,7 @@
                 <tbody>
                     @forelse ($rsvps as $rsvp)
                         <tr>
-                            <td>
-                                {{ $rsvps->firstItem() + $loop->index }}
-                            </td>
+                            <td>{{ $rsvps->firstItem() + $loop->index }}</td>
 
                             <td class="guest-name">
                                 {{ $rsvp->guest_name }}
@@ -312,9 +172,7 @@
                                 </div>
                             </td>
 
-                            <td>
-                                {{ $rsvp->created_at->format('d/m/Y H:i') }}
-                            </td>
+                            <td>{{ $rsvp->created_at->format('d/m/Y H:i') }}</td>
                         </tr>
                     @empty
                         <tr>
