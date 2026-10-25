@@ -844,6 +844,25 @@
     color: var(--rose-dark);
     box-shadow: 0 8px 22px rgba(74, 63, 58, .16);
 }
+/* ===== Ikon musik dicoret saat mati ===== */
+.music-icon-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-tool.music-off .music-icon-wrap::after {
+    content: "";
+    position: absolute;
+    left: -3px;
+    right: -3px;
+    top: 50%;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transform: rotate(-45deg);
+}
 
 .page-tool i {
     font-size: 15px;
